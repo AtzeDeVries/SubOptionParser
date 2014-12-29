@@ -1,0 +1,60 @@
+=== Description
+
+A sub option command line parser in the style of Python ArgParse. It is
+based on the ruby standard library optparse.  
+
+=== How To
+
+  s = SubOptionParser.new
+  s.sub('thissuboption','desciption')
+  s.sub('thisotheroption','description')
+  s.suboption('thissuboption',:hashkey ,'optparse','like','arguments')
+  s.suboption('thisotheroption',:host','-h HOST','--host HOST','host to connect to')
+  s.suboption('thisotheroption',:port','-p PORT','--port PORT','portnumber to connect to')
+  s.globaloption(:hashkey,'optparse','like','arguments')
+  s.globaloption(:verbose','-v','--verbose','set verbosity on')
+
+  arguments = s.parse!
+
+  puts arguments
+
+Running with switch
+  
+  ./scriptname.rb thisotheroption  --help
+
+returns the help (like optparse)
+
+Running with switch
+
+  ./scriptname.rb thisotheroption --host 127.0.0.1 --port 8080
+
+returns the following hash
+  
+  arguments = {
+    :sub => 'thisotheroption',
+    :host => '127.0.0.1',
+    :port => 8080
+  }
+
+Running the script without switches returns a list op suboptions.
+
+You can change the header (when running the script without switches) by 
+  
+  s.header('this string')
+
+You can initialize this class with a default options hash
+
+  s = SubOptionparser.new({ :host=> '127.0.0.1', :port => 8080 })
+
+The parser will return a hash with these values unless overwritten with a switch
+
+
+
+=== Requirements
+
+* Ruby
+
+=== Links
+
+* {Atze de Vries @ Github}[http://www.github.com/AtzeDeVries]
+* {SubOptionParse}[http://www.github.com/AtzeDeVries/SubOptionParser]
