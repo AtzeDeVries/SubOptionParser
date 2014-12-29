@@ -4,7 +4,7 @@ class SubOptionParser
     require 'optparse'
     @subs = Hash.new
     @opts = options
-    @header = "This function has the following subcommands. Run\n#{$0} <subcommand> --help for information about a subcommand\n\n"
+    @header = "This script has the following subcommands. Run\n#{$0} <subcommand> --help for information about a subcommand\n\n"
   end
 
   def header(header)
